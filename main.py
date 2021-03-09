@@ -1,31 +1,41 @@
 from selenium import webdriver
 
-"""Assignation d'un déclenchement du driver"""
-driver = webdriver.Chrome(executable_path='chromedriver.exe')
 
-"""Accès au site directement avec Chrome"""
-driver.get('https://meteofrance.com/')
+class Programme_TV:
+    """Accès au site Programme TV"""
 
-"""Accepter le cookies"""
-btn_cookies = driver.find_element_by_id('didomi-notice-agree-button')
+    """Assignation d'un déclenchement du driver"""
+    driver = webdriver.Chrome(executable_path='chromedriver.exe')
 
-"""Clic sur le bouton accepter"""
-btn_cookies.click()
+    """Accès au site directement avec Chrome"""
+    driver.get('https://www.programme-tv.net/')
 
-"""Récupération de la barre de recherche pour saisir la ville"""
-search_bar = driver.find_element_by_id('search_form_input')
 
-"""Saisie de la ville dans la barre de recherche"""
-search_bar.send_keys('Paris')
+class Meteo_france:
+    """Accès au site Météo France"""
 
-"""Récupération du bouton 'rechercher'"""
-search_btn = driver.find_element_by_css_selector('#block-mfsearchform > form > button')
+    """Assignation d'un déclenchement du driver"""
+    driver = webdriver.Chrome(executable_path='chromedriver.exe')
 
-"""Clic sur le bouton 'rechercher'"""
-search_btn.click()
+    """Accès au site directement avec Chrome"""
+    driver.get('https://meteofrance.com/')
 
-"""Sélection de la ville affichée par le site"""
-search_selection = driver.find_element_by_css_selector('#search_result_poi_682010 > a > p')
+    """Accepter le cookies"""
+    btn_cookies = driver.find_element_by_id('didomi-notice-agree-button')
+    btn_cookies.click()
 
-"""Clic sur la ville affichée par le site"""
-search_selection.click()
+    """Récupération de la barre de recherche pour saisir la ville"""
+    search_bar = driver.find_element_by_id('search_form_input')
+    search_bar.send_keys('XXXXX')
+
+    """Récupération du bouton 'rechercher'"""
+    search_btn = driver.find_element_by_css_selector('#block-mfsearchform > form > button')
+    search_btn.click()
+
+    """Sélection de la ville affichée par le site"""
+    search_selection = driver.find_element_by_css_selector('#search_result_poi_XXXXX > a > p')
+    search_selection.click()
+
+
+programme_tv = Programme_TV()
+meteo_france = Meteo_france()
